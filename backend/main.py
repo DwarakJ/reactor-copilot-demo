@@ -1,13 +1,17 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 app = FastAPI(title="ABC Sports Centre Activities API")
 
+# Production-ready CORS configuration
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "*").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=allowed_origins,
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
@@ -33,6 +37,10 @@ FEATURED_ACTIVITIES = [
 ]
 
 enrollments = []
+
+@app.get("/")
+def read_root():
+    return {"message": "ABC Sports Centre Activities API", "status": "healthy"}
 
 @app.get("/activities")
 def get_activities():
