@@ -63,3 +63,17 @@ This project is a full-stack web application for ABC Sports Centre, allowing the
 
 ## License
 MIT
+
+## Deployment
+
+For deploying this application to Azure, see the comprehensive deployment guide:
+
+- **[Azure Deployment Guide](docs/AZURE_DEPLOYMENT.md)** - Complete deployment documentation with architecture overview
+- **[Quick Start Guide](docs/QUICK_START.md)** - Step-by-step deployment checklist
+
+The recommended architecture uses:
+- **Backend**: Azure App Service (Python/FastAPI)
+- **Frontend**: Azure Static Web Apps (React)
+- **CI/CD**: GitHub Actions
+
+This provides a production-ready, scalable, and cost-effective solution (~$15/month).

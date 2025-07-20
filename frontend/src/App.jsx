@@ -2,7 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const API_URL = process.env.REACT_APP_API_URL || 
+                process.env.NODE_ENV === 'production' 
+                ? 'https://abc-sports-api.azurewebsites.net'
+                : 'http://localhost:8000';
 
 function App() {
   const [activities, setActivities] = useState([]);
