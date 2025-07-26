@@ -82,9 +82,8 @@ init_db()
 
 @app.get("/activities")
 def get_activities(db: Session = Depends(get_db)):
-    all_activities = db.query(Activity).all()
-    activities = [activity.name for activity in all_activities]
-    featured = [activity.name for activity in all_activities if activity.is_featured == 1]
+    activities = [activity.name for activity in db.query(Activity.name).all()]
+    featured = [activity.name for activity in db.query(Activity.name).filter(Activity.is_featured == 1).all()]
     return {"activities": activities, "featured": featured}
 
 @app.post("/enroll")
