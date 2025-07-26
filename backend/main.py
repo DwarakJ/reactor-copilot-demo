@@ -17,7 +17,7 @@ class Activity(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
-    is_featured = Column(Integer, default=0)  # 0 = False, 1 = True
+    is_featured = Column(Boolean, default=False)
 
 class Enrollment(Base):
     __tablename__ = "enrollments"
